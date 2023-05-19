@@ -91,6 +91,9 @@ public class RegisterScreen extends javax.swing.JFrame {
             if (Arrays.equals(fieldPassword.getPassword(), fieldPasswordConfirm.getPassword())) {
                 if (dbAccess.createAdminLogin(fieldUsername.getText(), fieldPassword.getText())) {
                     logger.info("Sucesso ao criar usuário.");
+                    AdministrationScreen page = new AdministrationScreen();
+                    page.setVisible(true);
+                    dispose();
                 } else {
                     logger.warning("Erro ao criar usuário.");
                 }

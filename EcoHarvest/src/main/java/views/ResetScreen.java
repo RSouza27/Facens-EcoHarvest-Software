@@ -94,6 +94,9 @@ public class ResetScreen extends javax.swing.JFrame {
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         if (dbAccess.updateAdminLogin(fieldUsername.getText(), fieldPassword.getText())) {
             logger.info("Senha alterada com sucesso.");
+            AdministrationScreen page = new AdministrationScreen();
+            page.setVisible(true);
+            dispose();
         } else {
             logger.warning("Erro ao alterar senha.");
         }

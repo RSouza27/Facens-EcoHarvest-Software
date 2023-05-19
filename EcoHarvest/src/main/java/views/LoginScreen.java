@@ -87,6 +87,9 @@ public class LoginScreen extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         if (dbAccess.checkAdminLogin(fieldUsername.getText(),fieldPassword.getText())) {
             logger.info("Login realizado com sucesso.");
+            AdministrationScreen page = new AdministrationScreen();
+            page.setVisible(true);
+            dispose();
         } else {
             logger.warning("Falha ao realizar login.");
         }
