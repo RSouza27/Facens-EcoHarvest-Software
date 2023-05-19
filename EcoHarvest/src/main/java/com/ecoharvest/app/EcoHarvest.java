@@ -3,7 +3,7 @@
  */
 
 package com.ecoharvest.app;
-import com.ecoharvest.app.views.*;
+import views.SplashScreen;
 
 /**
  *
