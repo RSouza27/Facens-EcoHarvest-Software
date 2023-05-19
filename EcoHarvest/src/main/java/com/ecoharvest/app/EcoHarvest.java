@@ -3,6 +3,7 @@
  */
 
 package com.ecoharvest.app;
+import com.ecoharvest.app.views.*;
 
 /**
  *
@@ -11,6 +12,7 @@ package com.ecoharvest.app;
 public class EcoHarvest {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        SplashScreen load = new SplashScreen();
+        load.setVisible(true);
     }
 }
