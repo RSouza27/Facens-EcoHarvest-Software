@@ -4,17 +4,47 @@
  */
 package views;
 
+import communication.Communication;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Unknown Account
  */
 public class SplashScreen extends javax.swing.JFrame {
-
+    private static final Logger logger = Logger.getLogger(SplashScreen.class.getName());
+    Communication dbAccess = new Communication();
+    
     /**
      * Creates new form SplashScreen
      */
     public SplashScreen() {
         initComponents();
+        logger.info("Inicializando Sistema");
+        
+        // Verificando conectividade.
+        if (dbAccess.checkDatabaseConnection()){
+            logger.info("Comunicacao com banco de dados realizada com sucesso.");
+        } else {
+            logger.warning("Erro ao se conectar com bando de dados");
+            System.exit(0);
+        }
+        
+        // Verificando Estrutura.
+        if (dbAccess.checkDatabaseStructure()){
+            logger.info("Estrutura do banco de dados correta.");
+        } else {
+            logger.info("Estrutura do banco de dados incorreta");
+            logger.info("Tentando criar estrutura do banco de dados...");
+            if (dbAccess.createDatabaseStructure()) {
+                logger.info("Estrutura do banco de dados criada com suceso.");
+            } else {
+                logger.warning("Erro ao tentar criar estrutura do banco de dados.");
+                System.exit(0);
+            }
+        }
+        
+        logger.info("Sistema e banco de dados carregado com sucesso.");
     }
 
     /**

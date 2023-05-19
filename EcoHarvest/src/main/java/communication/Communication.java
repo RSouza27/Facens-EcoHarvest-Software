@@ -10,4 +10,17 @@ package communication;
  */
 public class Communication {
     
+    // Funções para verificar integridade do banco de dados.
+    public boolean checkDatabaseConnection() {
+        return true;
+    }
+    
+    public boolean checkDatabaseStructure() {
+        return true;
+    }
+    
+    // Funções para ajustar banco de dados
+    public boolean createDatabaseStructure() {
+        return true;
+    }
 }
