@@ -20,31 +20,46 @@ public class SplashScreen extends javax.swing.JFrame {
      */
     public SplashScreen() {
         initComponents();
-        logger.info("Inicializando Sistema");
-        
-        // Verificando conectividade.
-        if (dbAccess.checkDatabaseConnection()){
-            logger.info("Comunicacao com banco de dados realizada com sucesso.");
-        } else {
-            logger.warning("Erro ao se conectar com bando de dados");
-            System.exit(0);
-        }
-        
-        // Verificando Estrutura.
-        if (dbAccess.checkDatabaseStructure()){
-            logger.info("Estrutura do banco de dados correta.");
-        } else {
-            logger.info("Estrutura do banco de dados incorreta");
-            logger.info("Tentando criar estrutura do banco de dados...");
-            if (dbAccess.createDatabaseStructure()) {
-                logger.info("Estrutura do banco de dados criada com suceso.");
-            } else {
-                logger.warning("Erro ao tentar criar estrutura do banco de dados.");
-                System.exit(0);
+        setLocationRelativeTo(null);
+        new Thread(){
+            public void run(){
+                try {
+                    logger.info("Inicializando Sistema");
+                    HomeScreen home = new HomeScreen();
+                    
+                    // Verificando conectividade.
+                    if (dbAccess.checkDatabaseConnection()){
+                        logger.info("Comunicacao com banco de dados realizada com sucesso.");
+                    } else {
+                        logger.warning("Erro ao se conectar com bando de dados");
+                        System.exit(0);
+                    }
+
+                    // Verificando Estrutura.
+                    if (dbAccess.checkDatabaseStructure()){
+                        logger.info("Estrutura do banco de dados correta.");
+                    } else {
+                        logger.info("Estrutura do banco de dados incorreta");
+                        logger.info("Tentando criar estrutura do banco de dados...");
+                        if (dbAccess.createDatabaseStructure()) {
+                            logger.info("Estrutura do banco de dados criada com suceso.");
+                        } else {
+                            logger.warning("Erro ao tentar criar estrutura do banco de dados.");
+                            System.exit(0);
+                        }
+                    }
+
+                    logger.info("Sistema e banco de dados carregado com sucesso.");
+                    
+                    home.setVisible(true);
+                } catch (Exception ex) {
+                    logger.warning("Erro ao carregar sistema.");
+                    System.exit(0);
+                } finally {
+                    dispose();
+                }
             }
-        }
-        
-        logger.info("Sistema e banco de dados carregado com sucesso.");
+        }.start();
     }
 
     /**
