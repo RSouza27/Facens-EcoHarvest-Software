@@ -32,6 +32,10 @@ public class Communication {
         return true;
     }
     
+    public boolean updateAdminLogin(String username, String password) {
+        return "admin".equals(username);
+    }
+    
     public boolean checkAdminUsername(String username) {
         return !"admin".equals(username);
     }
