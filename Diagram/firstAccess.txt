@@ -1,0 +1,49 @@
+%% https://mermaid.live/view#pako:eNqtVs2O2jAQfpXI0kqLBBRY2EAOSFvaag-tWpX2UkDIxEOwROzUdrrdRTxM1UMfhBerE5OQBPNTqbngGeb75vN4xskG-ZwA8lAgcLRyvryeMkc_Ml4Yh-RL9YQFTMb7hfPW549Y_ACpnFfvqNA_D74PUs4MMnkiHMB8zTGhLLi9_YQDyrAzwkJAgBnhtZrTaAxN1IqHkIc8aqNWq_AkEWn8QjFNqgMnH6Pdn91v7rxPrNm5eJ2RSgUih3xOHYIXUIdVnuGgLzVzgWnCROHRXrV_7nO2pCLMc42MjcXMDqhkyfAnQ01ULEHMlxTWZJgsGQ5h5jSajX9niqR8InuqCGuDC3KZ6ubmzBYyRbrwElSh6gSWlFHhfJXx7pegfHZNQTJRJ9nGwFa4VN2SuoqcA31q5v_mx3ss86gbbcKqvNm_Ft5UsKWBDHBfa6woZ9YusmCyZFURRa7LwLLL9EReH1uf_bckmWnrQFuS8rRm813cvfEUim8mvniUR1oLLJlhHbSrgNa5shz5KelnL5KMwyKzWLgykwVWEHkNriIek9Bci5TB2nlIrBOjsmc67DKFXmz_S_FlndZoYMQsKq80spiQRVN-X1NVPFCyONCmLMORAKwg2V05zGzMxJh333FMHBGNzYhWmAUZ0ZmM1xxEhfu6iSyLPnvF66qhOgpBc1Civws2iXuK1ApCmCJPL_VdhuO1mqIp2-pQHCs-fmY-8pZ4LaGOjLw3FOtyh7k3wgx5G_QTeXetfrPldgbtjns_6PYH_Tp6Rl6v6ba6brvvttqu2-ne9XrbOnrhXDO0my3zdDu9gdu5u-_WERCquPhgvl3ST5g0xbcUoEQM27_ceQNW
+graph TB
+    subgraph software[Software EcoHarvest /First Access]
+        page_loading((Pagina Carregando)) --> page_home((Pagina Home))
+        page_home --> btn_login[Opção Login]
+        page_home --> btn_register[Opção Registro]
+        
+        btn_login --> page_login((Pagina Login))
+
+        page_login_confirm[Opção Confirmar]
+
+        page_login --> page_login_confirm
+        page_login --> login_user_field>username] -.- page_login_confirm
+        page_login --> login_psswd_field>password] -.- page_login_confirm
+        %% page_login --> page_login_username_reset[Opção Redefinir Usuário]
+        page_login --> page_login_password_reset[Opção Redefinir Senha]
+
+        %% page_login_username_reset --> page_reset_username((Pagina Redefinir Usuário))
+        page_login_password_reset --> page_reset_password((Pagina Redefinir Senha))
+
+        page_reset_confirmation[Opção Confirmar]
+        page_reset_password --> page_reset_confirmation
+        page_reset_password --> reset_password_field_username>username] -.- page_reset_confirmation
+        page_reset_password --> reset_password_field_password>password] -.- page_reset_confirmation
+
+        btn_register --> page_register((Pagina Registro))
+        
+        page_register --> register_user_field>username]
+        page_register --> register_psswd_field>password]
+
+        page_register --> page_register_confirm[Opção Confirmar]
+        register_user_field -.- page_register_confirm
+        register_psswd_field -.- page_register_confirm
+        
+        page_admin((Painel Admin))
+        page_login_confirm --> page_admin
+        page_reset_confirmation --> page_admin
+        page_register_confirm --> page_admin
+    end
+    
+    subgraph db[db.sqlite]
+        db_register_admin>Create Adm]
+        db_login_admin>Access Adm]
+        db_update_admin>Change Adm]
+
+        db_register_admin -.- page_register_confirm
+        db_update_admin -.- page_reset_confirmation
+        db_login_admin -.- page_login_confirm
+    end
