@@ -8,6 +8,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -70,6 +71,35 @@ public class SQLite {
             Statement stmt = conn.createStatement()) {
             stmt.execute(createTableQuery);
             return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+    
+    public static boolean checkAdminExist(String username) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE);
+             PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM " + TABLE_ADMIN + " WHERE username = ?")) {
+
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {}
+        return false;
+    }
+    
+    public static boolean createAdmin(String username, String password) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE);
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO " + TABLE_ADMIN + " (username, password) VALUES (?, ?)")) {
+
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
         } catch (SQLException e) {
             return false;
         }

@@ -25,14 +25,14 @@ public class Communication {
     }
     
     public boolean createAdminLogin(String username, String password) {
-        return true;
+        return SQLite.createAdmin(username, password);
     }
     
     public boolean updateAdminLogin(String username, String password) {
         return "admin".equals(username);
     }
     
-    public boolean checkAdminUsername(String username) {
-        return !"admin".equals(username);
+    public boolean checkAdminExist(String username) {
+        return SQLite.checkAdminExist(username);
     }
 }

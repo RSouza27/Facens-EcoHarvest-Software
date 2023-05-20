@@ -89,9 +89,11 @@ public class RegisterScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldUsernameActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        if (dbAccess.checkAdminUsername(fieldUsername.getText())) {
+        String username = fieldUsername.getText().replaceAll("\\s", "").toLowerCase();
+        String password = fieldPassword.getText().replaceAll("\\s", "");
+        if (!dbAccess.checkAdminExist(username)) {
             if (Arrays.equals(fieldPassword.getPassword(), fieldPasswordConfirm.getPassword())) {
-                if (dbAccess.createAdminLogin(fieldUsername.getText(), fieldPassword.getText())) {
+                if (dbAccess.createAdminLogin(username, password)) {
                     logger.info("Sucesso ao criar usuário.");
                     AdministrationScreen page = new AdministrationScreen();
                     page.setVisible(true);
