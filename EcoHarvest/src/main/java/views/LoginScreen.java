@@ -20,6 +20,8 @@ public class LoginScreen extends javax.swing.JFrame {
      */
     public LoginScreen() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("EcoHarvest - Login");
     }
 
     /**

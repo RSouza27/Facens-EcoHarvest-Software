@@ -15,6 +15,8 @@ public class EmployeeManageScreen extends javax.swing.JFrame {
      */
     public EmployeeManageScreen() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("EcoHarvest - Employee Management");
     }
 
     /**

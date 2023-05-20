@@ -15,6 +15,8 @@ public class HomeScreen extends javax.swing.JFrame {
      */
     public HomeScreen() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("EcoHarvest");
     }
 
     /**

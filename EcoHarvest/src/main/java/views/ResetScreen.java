@@ -20,6 +20,8 @@ public class ResetScreen extends javax.swing.JFrame {
      */
     public ResetScreen() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("EcoHarvest - Reset Password");
     }
 
     /**
