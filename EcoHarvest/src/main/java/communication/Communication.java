@@ -29,7 +29,7 @@ public class Communication {
     }
     
     public boolean updateAdminLogin(String username, String password) {
-        return "admin".equals(username);
+        return SQLite.updateAdminLogin(username, password);
     }
     
     public boolean checkAdminExist(String username) {
