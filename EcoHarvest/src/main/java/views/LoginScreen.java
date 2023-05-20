@@ -87,7 +87,9 @@ public class LoginScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if (dbAccess.checkAdminLogin(fieldUsername.getText(),fieldPassword.getText())) {
+        String username = fieldUsername.getText().replaceAll("\\s", "").toLowerCase();
+        String password = fieldPassword.getText().replaceAll("\\s", "");
+        if (dbAccess.checkAdminLogin(username,password)) {
             logger.info("Login realizado com sucesso.");
             AdministrationScreen page = new AdministrationScreen();
             page.setVisible(true);

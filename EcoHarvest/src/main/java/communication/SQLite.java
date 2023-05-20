@@ -104,5 +104,21 @@ public class SQLite {
             return false;
         }
     }
+    
+    public static boolean checkAdminLogin(String username, String password) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE);
+             PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) FROM " + TABLE_ADMIN + " WHERE username = ? AND password = ?")) {
+
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {}
+        return false;
+    }
 }
 

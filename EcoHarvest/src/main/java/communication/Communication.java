@@ -21,7 +21,7 @@ public class Communication {
     
     // Funções para trabalhar com banco de dados.
     public boolean checkAdminLogin(String username, String password) {
-        return "admin".equals(username) && "admin".equals(password);
+        return SQLite.checkAdminLogin(username, password);
     }
     
     public boolean createAdminLogin(String username, String password) {
