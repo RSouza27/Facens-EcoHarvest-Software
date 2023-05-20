@@ -6,6 +6,7 @@ package views;
 
 import communication.Communication;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -14,22 +15,51 @@ import java.util.logging.Logger;
 public class SplashScreen extends javax.swing.JFrame {
     private static final Logger logger = Logger.getLogger(SplashScreen.class.getName());
     Communication dbAccess = new Communication();
+    private int progressValue = 0;
+    private final int progressTimer = 25;
     
+    private void progressBarUpdate(int amount) {
+        if (amount <= 0) {
+            progressBar.setValue(0);
+        } else {
+            progressValue += amount;
+            if (progressValue > 100) progressValue = 100;
+            progressBar.setValue(progressValue);
+        }
+    }
+    
+    private void progressSlow(int amount, Thread thPtr) {
+        for (int x=0; x<=amount; x++) {
+            progressBarUpdate(1);
+            try {
+                thPtr.sleep(progressTimer);
+            } catch (InterruptedException ex) {}
+        }
+    }
+
     /**
      * Creates new form SplashScreen
      */
     public SplashScreen() {
         initComponents();
+        
         setLocationRelativeTo(null);
+        setTitle("EcoHarvest - Loading");
+        progressBarUpdate(0);
+        
         new Thread(){
+            @Override
             public void run(){
                 try {
                     logger.info("Inicializando Sistema");
                     HomeScreen home = new HomeScreen();
-                    
+                    progressSlow(25, this);
+                    //progressBarUpdate(100);
+                            
                     // Verificando conectividade.
                     if (dbAccess.checkDatabaseConnection()){
                         logger.info("Comunicacao com banco de dados realizada com sucesso.");
+                        progressSlow(25, this);
                     } else {
                         logger.warning("Erro ao se conectar com bando de dados");
                         System.exit(0);
@@ -38,11 +68,14 @@ public class SplashScreen extends javax.swing.JFrame {
                     // Verificando Estrutura.
                     if (dbAccess.checkDatabaseStructure()){
                         logger.info("Estrutura do banco de dados correta.");
+                        progressSlow(25, this);
                     } else {
+                        progressSlow(10, this);
                         logger.info("Estrutura do banco de dados incorreta");
                         logger.info("Tentando criar estrutura do banco de dados...");
                         if (dbAccess.createDatabaseStructure()) {
                             logger.info("Estrutura do banco de dados criada com suceso.");
+                            progressSlow(15, this);
                         } else {
                             logger.warning("Erro ao tentar criar estrutura do banco de dados.");
                             System.exit(0);
@@ -50,6 +83,7 @@ public class SplashScreen extends javax.swing.JFrame {
                     }
 
                     logger.info("Sistema e banco de dados carregado com sucesso.");
+                    progressSlow(25, this);
                     
                     home.setVisible(true);
                 } catch (Exception ex) {
@@ -71,32 +105,41 @@ public class SplashScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jpbCarregando = new javax.swing.JProgressBar();
-        lblLogo = new javax.swing.JLabel();
+        progressBar = new javax.swing.JProgressBar();
+        logoEcoHarvest = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 51, 0));
 
-        jpbCarregando.setBackground(new java.awt.Color(0, 102, 0));
-        jpbCarregando.setForeground(new java.awt.Color(0, 102, 0));
+        progressBar.setBackground(new java.awt.Color(255, 255, 255));
+        progressBar.setForeground(new java.awt.Color(153, 51, 0));
+        progressBar.setBorder(javax.swing.BorderFactory.createLineBorder(null));
 
-        lblLogo.setLabelFor(lblLogo);
-        lblLogo.setText("LOGO");
+        logoEcoHarvest.setLabelFor(logoEcoHarvest);
+        logoEcoHarvest.setText("EcoHarvest");
+        logoEcoHarvest.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jpbCarregando, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(logoEcoHarvest, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpbCarregando, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(logoEcoHarvest, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -130,15 +173,13 @@ public class SplashScreen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SplashScreen().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new SplashScreen().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JProgressBar jpbCarregando;
-    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel logoEcoHarvest;
+    private javax.swing.JProgressBar progressBar;
     // End of variables declaration//GEN-END:variables
 }
