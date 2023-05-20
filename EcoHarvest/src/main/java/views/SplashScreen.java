@@ -86,16 +86,8 @@ public class SplashScreen extends javax.swing.JFrame {
                         logger.info("Estrutura do banco de dados correta.");
                         progressSlow(25, this);
                     } else {
-                        progressSlow(10, this);
                         logger.info("Estrutura do banco de dados incorreta");
-                        logger.info("Tentando criar estrutura do banco de dados...");
-                        if (dbAccess.createDatabaseStructure()) {
-                            logger.info("Estrutura do banco de dados criada com suceso.");
-                            progressSlow(15, this);
-                        } else {
-                            logger.warning("Erro ao tentar criar estrutura do banco de dados.");
-                            System.exit(0);
-                        }
+                        System.exit(0);
                     }
 
                     logger.info("Sistema e banco de dados carregado com sucesso.");

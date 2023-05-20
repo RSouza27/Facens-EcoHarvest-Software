@@ -12,18 +12,14 @@ public class Communication {
     
     // Funções para verificar integridade do banco de dados.
     public boolean checkDatabaseConnection() {
-        return true;
+        return SQLite.checkDatabaseConnection();
     }
     
     public boolean checkDatabaseStructure() {
-        return true;
+        return SQLite.checkDatabaseStructure();
     }
     
-    // Funções para ajustar banco de dados
-    public boolean createDatabaseStructure() {
-        return true;
-    }
-    
+    // Funções para trabalhar com banco de dados.
     public boolean checkAdminLogin(String username, String password) {
         return "admin".equals(username) && "admin".equals(password);
     }
