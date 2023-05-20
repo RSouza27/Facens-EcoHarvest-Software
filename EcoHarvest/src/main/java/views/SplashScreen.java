@@ -5,8 +5,13 @@
 package views;
 
 import communication.Communication;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -36,7 +41,12 @@ public class SplashScreen extends javax.swing.JFrame {
             } catch (InterruptedException ex) {}
         }
     }
-
+    
+    private void setLogoImage(BufferedImage image) {
+        ImageIcon icon = new ImageIcon(image);
+        logoEcoHarvest.setIcon(icon);
+    }
+    
     /**
      * Creates new form SplashScreen
      */
@@ -46,6 +56,12 @@ public class SplashScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setTitle("EcoHarvest - Loading");
         progressBarUpdate(0);
+        
+        try {
+            URL imageUrl = new URL("https://github.com/WhitePoodleMoth/EcoHarvest/blob/main/Assets/logo.jpeg?raw=true");
+            BufferedImage image = ImageIO.read(imageUrl);
+            SwingUtilities.invokeLater(() -> setLogoImage(image));
+        } catch (IOException ex) {}
         
         new Thread(){
             @Override
