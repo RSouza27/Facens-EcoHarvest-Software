@@ -170,7 +170,7 @@ public class ResetScreen extends javax.swing.JFrame {
         if (dbAccess.checkAdminExist(username)) {
             if (dbAccess.updateAdminLogin(username, password)) {
                 logger.info("Senha alterada com sucesso.");
-                AdministrationScreen page = new AdministrationScreen();
+                HomeScreen page = new HomeScreen();
                 page.setVisible(true);
                 dispose();
             } else {
