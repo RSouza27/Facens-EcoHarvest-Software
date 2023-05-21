@@ -4,6 +4,8 @@
  */
 package communication;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Unknown Account
@@ -34,5 +36,26 @@ public class Communication {
     
     public boolean checkAdminExist(String username) {
         return SQLite.checkAdminExist(username);
+    }
+    
+    // Funções para administrar funcionários.
+    public boolean createEmployee(String nome, String sobrenome, String email, String cargo, String nascimento, String celular, String genero, double salario, String rua, int numero, String bairro, String cidade, String estado) {
+        return SQLite.createEmployee(nome, sobrenome, email, cargo, nascimento, celular, genero, salario, rua, numero, bairro, cidade, estado);
+    }
+    
+    public boolean changeEmployee() {
+        return true;
+    }
+    
+    public boolean deleteEmployee(int id) {
+        return true;
+    }
+    
+    public boolean searchEmployee(int id) {
+        return true;
+    }
+    
+    public ArrayList getAllEmployees() {
+        return SQLite.getAllEmployees();
     }
 }
