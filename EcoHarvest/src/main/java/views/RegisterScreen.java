@@ -60,6 +60,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         btnRegister.setBackground(new java.awt.Color(0, 102, 0));
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
         btnRegister.setText("Criar conta");
+        btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
@@ -77,6 +78,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         jLabel11.setText("Confirme sua senha:");
 
         jButton5.setText("Voltar");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
