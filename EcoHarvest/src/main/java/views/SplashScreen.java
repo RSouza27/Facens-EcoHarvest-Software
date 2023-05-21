@@ -21,7 +21,7 @@ public class SplashScreen extends javax.swing.JFrame {
     private static final Logger logger = Logger.getLogger(SplashScreen.class.getName());
     Communication dbAccess = new Communication();
     private int progressValue = 0;
-    private final int progressTimer = 25;
+    private final int progressTimer = 5;
     
     private void progressBarUpdate(int amount) {
         if (amount <= 0) {
