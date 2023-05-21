@@ -60,6 +60,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         btnRegister.setBackground(new java.awt.Color(0, 102, 0));
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
         btnRegister.setText("Criar conta");
+        btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
@@ -77,6 +78,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         jLabel11.setText("Confirme sua senha:");
 
         jButton5.setText("Voltar");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -100,9 +102,7 @@ public class RegisterScreen extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel11)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel9)))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -224,50 +224,17 @@ public class RegisterScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnLogin2;
-    private javax.swing.JButton btnLogin3;
     private javax.swing.JButton btnRegister;
-    private javax.swing.JButton btnReset;
-    private javax.swing.JButton btnReset2;
-    private javax.swing.JButton btnReset3;
     private javax.swing.JPasswordField fieldPassword;
-    private javax.swing.JPasswordField fieldPassword1;
-    private javax.swing.JPasswordField fieldPassword3;
-    private javax.swing.JPasswordField fieldPassword4;
     private javax.swing.JPasswordField fieldPasswordConfirm;
     private javax.swing.JTextField fieldUsername;
-    private javax.swing.JTextField fieldUsername1;
-    private javax.swing.JTextField fieldUsername3;
-    private javax.swing.JTextField fieldUsername4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JLabel lblLogin;
-    private javax.swing.JLabel lblLogin2;
-    private javax.swing.JLabel lblLogin3;
     private javax.swing.JLabel lblLogin4;
     // End of variables declaration//GEN-END:variables
 }

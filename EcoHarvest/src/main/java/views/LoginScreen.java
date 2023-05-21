@@ -85,6 +85,7 @@ public class LoginScreen extends javax.swing.JFrame {
         lblLogin.setText("Área de Login");
 
         jButton1.setText("Voltar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
