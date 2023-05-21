@@ -48,6 +48,7 @@ public class RegisterScreen extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 

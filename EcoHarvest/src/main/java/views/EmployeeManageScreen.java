@@ -67,6 +67,7 @@ public class EmployeeManageScreen extends javax.swing.JFrame {
         fieldNascimento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

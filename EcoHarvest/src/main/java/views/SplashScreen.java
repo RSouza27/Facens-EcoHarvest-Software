@@ -119,10 +119,11 @@ public class SplashScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 51, 0));
+        setResizable(false);
 
         progressBar.setBackground(new java.awt.Color(255, 255, 255));
         progressBar.setForeground(new java.awt.Color(153, 51, 0));
-        progressBar.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        progressBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         logoEcoHarvest.setLabelFor(logoEcoHarvest);
         logoEcoHarvest.setText("EcoHarvest");
