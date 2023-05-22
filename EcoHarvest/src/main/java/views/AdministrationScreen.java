@@ -16,19 +16,11 @@ import javax.swing.table.DefaultTableModel;
 public class AdministrationScreen extends javax.swing.JFrame {
     Communication dbAccess = new Communication();
     
-    /**
-     * Creates new form AdministrationScreen
-     */
-    public AdministrationScreen() {
-        initComponents();
-        setLocationRelativeTo(null);
-        setTitle("EcoHarvest - Administration");
-        
+    public boolean updateTable() {
         DefaultTableModel tableModel = new DefaultTableModel(
-        new Object[]{"ID", "Nome", "Sobrenome", "E-mail", "Cargo", "Data de Nascimento", "Celular", "Gênero", "Salário"},
-        0
-    );
-        
+                new Object[]{"ID", "Nome", "Sobrenome", "E-mail", "Cargo", "Data de Nascimento", "Celular", "Gênero", "Salário"},0
+        );
+      
         ArrayList<ArrayList<?>> employees = dbAccess.getAllEmployees();
         ArrayList<Integer> ids = (ArrayList<Integer>) employees.get(0);
         ArrayList<String> nomes = (ArrayList<String>) employees.get(1);
@@ -58,6 +50,17 @@ public class AdministrationScreen extends javax.swing.JFrame {
         JTable employeeTable = new JTable(tableModel);
         
         employeePane.setViewportView(employeeTable);
+        return true;
+    }
+    
+    /**
+     * Creates new form AdministrationScreen
+     */
+    public AdministrationScreen() {
+        initComponents();
+        setLocationRelativeTo(null);
+        setTitle("EcoHarvest - Administration");
+        updateTable();
     }
 
     /**
@@ -273,6 +276,13 @@ public class AdministrationScreen extends javax.swing.JFrame {
 
         jLabel2.setText("ID funcionário:");
 
+        fieldID.setText("0");
+        fieldID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldIDActionPerformed(evt);
+            }
+        });
+
         btnView.setForeground(new java.awt.Color(0, 102, 0));
         btnView.setText("Visualizar");
         btnView.addActionListener(new java.awt.event.ActionListener() {
@@ -391,7 +401,7 @@ public class AdministrationScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCreateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEmployeeActionPerformed
-        EmployeeManageScreen page = new EmployeeManageScreen();
+        EmployeeManageScreen page = new EmployeeManageScreen(0,0);
         page.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCreateEmployeeActionPerformed
@@ -403,16 +413,26 @@ public class AdministrationScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-        // TODO add your handling code here:
+        EmployeeManageScreen page = new EmployeeManageScreen(Integer.parseInt(fieldID.getText()), 1);
+        page.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+        if (dbAccess.deleteEmployee(Integer.parseInt(fieldID.getText()))) {
+            updateTable();
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        // TODO add your handling code here:
+        EmployeeManageScreen page = new EmployeeManageScreen(Integer.parseInt(fieldID.getText()), 2);
+        page.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void fieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldIDActionPerformed
 
     /**
      * @param args the command line arguments

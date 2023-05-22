@@ -93,16 +93,11 @@ public class SQLite {
                 + "nascimento TEXT NOT NULL,"
                 + "celular TEXT NOT NULL,"
                 + "genero TEXT NOT NULL,"
-                + "salario REAL NOT NULL,"
-                + "rua TEXT NOT NULL,"
-                + "numero INT NOT NULL,"
-                + "bairro TEXT NOT NULL,"
-                + "cidade TEXT NOT NULL,"
-                + "estado TEXT NOT NULL"
+                + "salario REAL NOT NULL"
                 + ")";
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE);
-             Statement stmt = conn.createStatement()) {
+            Statement stmt = conn.createStatement()) {
             stmt.execute(createTableQuery);
             return true;
         } catch (SQLException e) {
@@ -139,9 +134,9 @@ public class SQLite {
         }
     }
     
-    public static boolean createEmployee(String nome, String sobrenome, String email, String cargo, String nascimento, String celular, String genero, double salario, String rua, int numero, String bairro, String cidade, String estado) {
+    public static boolean createEmployee(String nome, String sobrenome, String email, String cargo, String nascimento, String celular, String genero, double salario) {
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE);
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO " + TABLE_EMPLOYEE + " (nome, sobrenome, email, cargo, nascimento, celular, genero, salario, rua, numero, bairro, cidade, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO " + TABLE_EMPLOYEE + " (nome, sobrenome, email, cargo, nascimento, celular, genero, salario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
 
             stmt.setString(1, nome);
             stmt.setString(2, sobrenome);
@@ -151,11 +146,6 @@ public class SQLite {
             stmt.setString(6, celular);
             stmt.setString(7, genero);
             stmt.setDouble(8, salario);
-            stmt.setString(9, rua);
-            stmt.setInt(10, numero);
-            stmt.setString(11, bairro);
-            stmt.setString(12, cidade);
-            stmt.setString(13, estado);
 
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
@@ -230,6 +220,68 @@ public class SQLite {
             allEmployees.add(salarios);
         } catch (SQLException e) {}
         return allEmployees;
+    }
+    
+    public static ArrayList<Object> getEmployeeData(int id) {
+        ArrayList<Object> employeeData = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE)) {
+            String sql = "SELECT * FROM " + TABLE_EMPLOYEE + " WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                employeeData.add(rs.getInt("id"));
+                employeeData.add(rs.getString("nome"));
+                employeeData.add(rs.getString("sobrenome"));
+                employeeData.add(rs.getString("email"));
+                employeeData.add(rs.getString("cargo"));
+                employeeData.add(rs.getString("nascimento"));
+                employeeData.add(rs.getString("celular"));
+                employeeData.add(rs.getString("genero"));
+                employeeData.add(rs.getDouble("salario"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+        return employeeData;
+    }
+
+    public static boolean setEmployeeData(int id, String nome, String sobrenome, String email, String cargo, String nascimento, String celular, String genero, double salario) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE)) {
+            String sql = "UPDATE " + TABLE_EMPLOYEE + " SET nome = ?, sobrenome = ?, email = ?, cargo = ?, nascimento = ?, celular = ?, genero = ?, salario = ? WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setString(2, sobrenome);
+            stmt.setString(3, email);
+            stmt.setString(4, cargo);
+            stmt.setString(5, nascimento);
+            stmt.setString(6, celular);
+            stmt.setString(7, genero);
+            stmt.setDouble(8, salario);
+            stmt.setInt(9, id);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {}
+        return false;
+    }
+    
+    public static boolean delEmployeeData(int id) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE)) {
+            String sql = "DELETE FROM " + TABLE_EMPLOYEE + " WHERE id = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Employee with ID " + id + " was deleted successfully.");
+                return true;
+            } else {
+                System.out.println("No Employee was found with ID " + id);
+                return false;
+            }
+        } catch (SQLException e) {}
+        return false;
     }
 
 }

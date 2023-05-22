@@ -39,20 +39,20 @@ public class Communication {
     }
     
     // Funções para administrar funcionários.
-    public boolean createEmployee(String nome, String sobrenome, String email, String cargo, String nascimento, String celular, String genero, double salario, String rua, int numero, String bairro, String cidade, String estado) {
-        return SQLite.createEmployee(nome, sobrenome, email, cargo, nascimento, celular, genero, salario, rua, numero, bairro, cidade, estado);
+    public boolean createEmployee(String nome, String sobrenome, String email, String cargo, String nascimento, String celular, String genero, double salario) {
+        return SQLite.createEmployee(nome, sobrenome, email, cargo, nascimento, celular, genero, salario);
     }
     
-    public boolean changeEmployee() {
-        return true;
+    public boolean changeEmployee(int id, String nome, String sobrenome, String email, String cargo, String nascimento, String celular, String genero, double salario) {
+        return SQLite.setEmployeeData(id, nome, sobrenome, email, cargo, nascimento, celular, genero, salario);
     }
     
     public boolean deleteEmployee(int id) {
-        return true;
+        return SQLite.delEmployeeData(id);
     }
     
-    public boolean searchEmployee(int id) {
-        return true;
+    public ArrayList<Object> searchEmployee(int id) {
+        return SQLite.getEmployeeData(id);
     }
     
     public ArrayList getAllEmployees() {

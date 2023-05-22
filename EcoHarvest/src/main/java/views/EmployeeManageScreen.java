@@ -5,6 +5,7 @@
 package views;
 
 import communication.Communication;
+import java.util.ArrayList;
 
 /**
  *
@@ -12,14 +13,52 @@ import communication.Communication;
  */
 public class EmployeeManageScreen extends javax.swing.JFrame {
     Communication dbAccess = new Communication();
+    int ID = 0;
+    int action = 0;
 
     /**
      * Creates new form EmployeeManageScreen
+     * @param ID
+     * @param action
      */
-    public EmployeeManageScreen() {
+    public EmployeeManageScreen(int ID, int action) {
         initComponents();
+        this.ID = ID;
+        this.action = action;
         setLocationRelativeTo(null);
         setTitle("EcoHarvest - Employee Management");
+        if (this.action>0) {
+            ArrayList<Object> employeeData = dbAccess.searchEmployee(this.ID);
+
+            // Assuming the order of elements in employeeData is the same as when they were added in getEmployeeData.
+            if (!employeeData.isEmpty()) {
+                fieldNome.setText((String) employeeData.get(1));
+                fieldSobrenome.setText((String) employeeData.get(2));
+                fieldEmail.setText((String) employeeData.get(3));
+                fieldCargo.setText((String) employeeData.get(4));
+                fieldNascimento.setText((String) employeeData.get(5));
+                fieldCelular.setText((String) employeeData.get(6));
+                fieldSalario.setText(Double.toString((Double) employeeData.get(8)));
+                fieldGenero.setSelectedItem((String) employeeData.get(7));
+            }
+    
+            if (this.action == 1) {
+                fieldNome.setEditable(false);
+                fieldSobrenome.setEditable(false);
+                fieldEmail.setEditable(false);
+                fieldCargo.setEditable(false);
+                fieldNascimento.setEditable(false);
+                fieldCelular.setEditable(false);
+                fieldSalario.setEditable(false);
+            }
+        }
+        if (this.action == 1){
+            labelFacaCadastro.setText("Visualize funcionario");
+            btnRegister.setText("Deletar");
+        } else if (this.action == 2) {
+            labelFacaCadastro.setText("Atualize funcionario");
+            btnRegister.setText("Atualizar");
+        }
     }
 
     /**
@@ -304,23 +343,40 @@ public class EmployeeManageScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldEstadoActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        String nome = fieldNome.getText();
-        String sobrenome = fieldSobrenome.getText();
-        String email = fieldEmail.getText();
-        String cargo = fieldCargo.getText();
-        String nascimento = fieldNascimento.getText();
-        String celular = fieldCelular.getText();
-        String genero = fieldGenero.getSelectedItem().toString();
-        Double salario = Double.valueOf(fieldSalario.getText());
-        String rua = fieldRua.getText();
-        int numero = Integer.parseInt(fieldNumero.getText());
-        String bairro = fieldBairro.getText();
-        String cidade = fieldCidade.getText();
-        String estado = fieldEstado.getSelectedItem().toString();
-        if (dbAccess.createEmployee(nome, sobrenome, email, cargo, nascimento, celular, genero, salario, rua, numero, bairro, cidade, estado)) {
-            AdministrationScreen page = new AdministrationScreen();
-            page.setVisible(true);
-            dispose();
+        if (this.action==0) {
+            String nome = fieldNome.getText();
+            String sobrenome = fieldSobrenome.getText();
+            String email = fieldEmail.getText();
+            String cargo = fieldCargo.getText();
+            String nascimento = fieldNascimento.getText();
+            String celular = fieldCelular.getText();
+            String genero = fieldGenero.getSelectedItem().toString();
+            Double salario = Double.valueOf(fieldSalario.getText());
+            if (dbAccess.createEmployee(nome, sobrenome, email, cargo, nascimento, celular, genero, salario)) {
+                AdministrationScreen page = new AdministrationScreen();
+                page.setVisible(true);
+                dispose();
+            }
+        } else if (action == 1) {
+            if (dbAccess.deleteEmployee(this.ID)) {
+                AdministrationScreen page = new AdministrationScreen();
+                page.setVisible(true);
+                dispose();
+            }
+        } else if (action == 2) {
+            String nome = fieldNome.getText();
+            String sobrenome = fieldSobrenome.getText();
+            String email = fieldEmail.getText();
+            String cargo = fieldCargo.getText();
+            String nascimento = fieldNascimento.getText();
+            String celular = fieldCelular.getText();
+            String genero = fieldGenero.getSelectedItem().toString();
+            Double salario = Double.valueOf(fieldSalario.getText());
+            if (dbAccess.changeEmployee(this.ID, nome, sobrenome, email, cargo, nascimento, celular, genero, salario)) {
+                AdministrationScreen page = new AdministrationScreen();
+                page.setVisible(true);
+                dispose();
+            }
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
