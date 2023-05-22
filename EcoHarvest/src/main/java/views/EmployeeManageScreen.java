@@ -420,7 +420,7 @@ public class EmployeeManageScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmployeeManageScreen().setVisible(true);
+                new EmployeeManageScreen(0,0).setVisible(true);
             }
         });
     }
