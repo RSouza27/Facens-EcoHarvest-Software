@@ -57,84 +57,64 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jSeparator2" min="-2" pref="116" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="labelFacaCadastro" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSeparator1" min="-2" pref="115" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="labelFacaCadastro1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="labelFacaCadastro2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="jLabel7" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel10" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnRegister" pref="125" max="32767" attributes="0"/>
-                              <Component id="fieldNome" alignment="0" max="32767" attributes="0"/>
-                              <Component id="fieldSobrenome" max="32767" attributes="0"/>
-                              <Component id="fieldEmail" max="32767" attributes="0"/>
-                              <Component id="fieldCargo" max="32767" attributes="0"/>
-                              <Component id="fieldRua" max="32767" attributes="0"/>
-                              <Component id="fieldCidade" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                              <Component id="labelFacaCadastro1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="fieldNumero" min="-2" pref="47" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="fieldBairro" min="-2" pref="76" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-                                          <Component id="fieldEstado" min="-2" pref="186" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="62" pref="62" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="fieldGenero" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="fieldSalario" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="fieldCelular" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="fieldNascimento" alignment="1" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="btnRegister" pref="125" max="32767" attributes="0"/>
+                                      <Component id="fieldNome" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="fieldSobrenome" max="32767" attributes="0"/>
+                                      <Component id="fieldEmail" max="32767" attributes="0"/>
+                                      <Component id="fieldCargo" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="62" pref="62" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jLabel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel6" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="fieldGenero" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="fieldSalario" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="fieldCelular" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="fieldNascimento" alignment="1" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
+                          <EmptySpace pref="19" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jSeparator2" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="labelFacaCadastro" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jSeparator1" min="-2" pref="126" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -144,8 +124,8 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="labelFacaCadastro" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="jSeparator2" alignment="1" min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="labelFacaCadastro1" min="-2" max="-2" attributes="0"/>
@@ -194,32 +174,12 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="labelFacaCadastro2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fieldRua" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fieldNumero" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="fieldBairro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="fieldCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="fieldEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnRegister" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -252,7 +212,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="33" red="0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cadastre um funcion&#xe1;rio"/>
+            <Property name="text" type="java.lang.String" value="Visualizar funcionario"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator2">
@@ -316,92 +276,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Dados Pessoais"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="labelFacaCadastro2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="33" red="0" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Endere&#xe7;o"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Rua:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="fieldRua">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="N&#xfa;mero:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="fieldNumero">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel9">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Bairro:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="fieldBairro">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel10">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cidade:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="fieldCidade">
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel11">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Estado:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="fieldEstado">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="28">
-                <StringItem index="0" value="Selecione"/>
-                <StringItem index="1" value="Acre (AC)"/>
-                <StringItem index="2" value="Alagoas (AL)"/>
-                <StringItem index="3" value="Amap&#xe1; (AP)"/>
-                <StringItem index="4" value="Amazonas (AM)"/>
-                <StringItem index="5" value="Bahia (BA)"/>
-                <StringItem index="6" value="Cear&#xe1; (CE)"/>
-                <StringItem index="7" value="Distrito Federal (DF)"/>
-                <StringItem index="8" value="Esp&#xed;rito Santo (ES)"/>
-                <StringItem index="9" value="Goi&#xe1;s (GO)"/>
-                <StringItem index="10" value="Maranh&#xe3;o (MA)"/>
-                <StringItem index="11" value="Mato Grosso (MT)"/>
-                <StringItem index="12" value="Mato Grosso do Sul (MS)"/>
-                <StringItem index="13" value="Minas Gerais (MG)"/>
-                <StringItem index="14" value="Par&#xe1; (PA)"/>
-                <StringItem index="15" value="Para&#xed;ba (PB)"/>
-                <StringItem index="16" value="Paran&#xe1; (PR)"/>
-                <StringItem index="17" value="Pernambuco (PE)"/>
-                <StringItem index="18" value="Piau&#xed; (PI)"/>
-                <StringItem index="19" value="Rio de Janeiro (RJ)"/>
-                <StringItem index="20" value="Rio Grande do Norte (RN)"/>
-                <StringItem index="21" value="Rio Grande do Sul (RS)"/>
-                <StringItem index="22" value="Rond&#xf4;nia (RO)"/>
-                <StringItem index="23" value="Roraima (RR)"/>
-                <StringItem index="24" value="Santa Catarina (SC)"/>
-                <StringItem index="25" value="S&#xe3;o Paulo (SP)"/>
-                <StringItem index="26" value="Sergipe (SE)"/>
-                <StringItem index="27" value="Tocantins (TO)"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldEstadoActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="btnRegister">
           <Properties>
