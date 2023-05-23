@@ -18,12 +18,6 @@ public class SelectionScreen extends javax.swing.JFrame {
      */
     public SelectionScreen() {
         initComponents();
-        Icon employeeIcon = new ImageIcon("assets/employee-icon.png");
-        btnAdminEmployee.setIcon(employeeIcon);
-        Icon productsIcon = new ImageIcon("assets/products-icon.png");
-        btnAdminProd.setIcon(productsIcon);
-        Icon buyProductsIcon = new ImageIcon("assets/buy-products.png");
-        btnBuyProd.setIcon(buyProductsIcon);
     }
 
     /**
@@ -39,7 +33,6 @@ public class SelectionScreen extends javax.swing.JFrame {
         bntSuppliers = new javax.swing.JButton();
         btnAdminEmployee = new javax.swing.JButton();
         btnAdminProd = new javax.swing.JButton();
-        btnBuyProd = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -77,16 +70,6 @@ public class SelectionScreen extends javax.swing.JFrame {
             }
         });
 
-        btnBuyProd.setBackground(new java.awt.Color(0, 102, 0));
-        btnBuyProd.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuyProd.setText("Efetuar Compra de Produtos");
-        btnBuyProd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnBuyProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuyProdActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 0));
         jLabel1.setText("Funcionalidades do Sistema");
@@ -102,14 +85,9 @@ public class SelectionScreen extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(105, 105, 105)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBuyProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bntSuppliers, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAdminProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAdminEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -119,7 +97,9 @@ public class SelectionScreen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,11 +120,9 @@ public class SelectionScreen extends javax.swing.JFrame {
                 .addComponent(btnAdminProd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(bntSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnBuyProd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(14, 14, 14))
+                .addGap(18, 18, 18))
         );
 
         btnAdminEmployee.getAccessibleContext().setAccessibleDescription("");
@@ -176,11 +154,6 @@ public class SelectionScreen extends javax.swing.JFrame {
         productsScreen.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnAdminProdActionPerformed
-
-    private void btnBuyProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyProdActionPerformed
-        BuyProductsScreen buyProductsScreen = new BuyProductsScreen();
-        buyProductsScreen.setVisible(true);
-    }//GEN-LAST:event_btnBuyProdActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         HomeScreen page = new HomeScreen();
@@ -227,7 +200,6 @@ public class SelectionScreen extends javax.swing.JFrame {
     private javax.swing.JButton bntSuppliers;
     private javax.swing.JButton btnAdminEmployee;
     private javax.swing.JButton btnAdminProd;
-    private javax.swing.JButton btnBuyProd;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
