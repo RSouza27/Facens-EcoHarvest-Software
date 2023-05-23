@@ -58,4 +58,25 @@ public class Communication {
     public ArrayList getAllEmployees() {
         return SQLite.getAllEmployees();
     }
+    
+    // Funções para administrar produtos.
+    public boolean createProduct(String Nome, String Peso, String Disponibilidade, String QtndEstoque, String Compra, String Venda) {
+        return SQLite.createProduct(Nome, Peso, Disponibilidade, QtndEstoque, Compra, Venda);
+    }
+    
+    public boolean changeProduct(int id, String Nome, String Peso, String Disponibilidade, String QtndEstoque, String Compra, String Venda) {
+        return SQLite.setProductData(id, Nome, Peso, Disponibilidade, QtndEstoque, Compra, Venda);
+    }
+    
+    public boolean deleteProduct(int id) {
+        return SQLite.delProductData(id);
+    }
+    
+    public ArrayList<Object> searchProduct(int id) {
+        return SQLite.getProductData(id);
+    }
+    
+    public ArrayList getAllProduct() {
+        return SQLite.getAllProduct();
+    }
 }

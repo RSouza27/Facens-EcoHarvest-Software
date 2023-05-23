@@ -22,6 +22,7 @@ public class SQLite {
     private static final String DB_FILE = "db.sqlite";
     private static final String TABLE_ADMIN = "admin";
     private static final String TABLE_EMPLOYEE = "employee";
+    private static String TABLE_PRODUCTS;
 
     private static boolean isDatabaseExist() {
         File file = new File(DB_FILE);
@@ -278,6 +279,117 @@ public class SQLite {
                 return true;
             } else {
                 System.out.println("No Employee was found with ID " + id);
+                return false;
+            }
+        } catch (SQLException e) {}
+        return false;
+    }
+
+    static ArrayList<Object> getProductData(int ID) {
+        ArrayList<Object> productsData = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE)) {
+            String sql = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE ID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, ID);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                productsData.add(rs.getInt("ID"));
+                productsData.add(rs.getString("Nome"));
+                productsData.add(rs.getString("Peso"));
+                productsData.add(rs.getString("Disponibilidade"));
+                productsData.add(rs.getString("QtndEstoque"));
+                productsData.add(rs.getString("Compra"));
+                productsData.add(rs.getString("Venda"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception: " + e.getMessage());
+        }
+        return productsData;
+    }
+
+    static ArrayList getAllProduct() {
+        ArrayList allProducts = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE);
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM " + TABLE_PRODUCTS);
+            ResultSet rs = stmt.executeQuery()) {
+            
+            ArrayList<Integer> IDS = new ArrayList<>();
+            ArrayList<String> Nomes = new ArrayList<>();
+            ArrayList<String> Pesos = new ArrayList<>();
+            ArrayList<String> Disponibilidades = new ArrayList<>();
+            ArrayList<String> QtndEstoques = new ArrayList<>();
+            ArrayList<String> Compras = new ArrayList<>();
+            ArrayList<String> Vendas = new ArrayList<>();
+
+            while (rs.next()) {
+                IDS.add(rs.getInt("ID"));
+                Nomes.add(rs.getString("Nome"));
+                Pesos.add(rs.getString("Peso"));
+                Disponibilidades.add(rs.getString("Disponibilidade"));
+                QtndEstoques.add(rs.getString("QtndEstoque"));
+                Compras.add(rs.getString("Compra"));
+                Vendas.add(rs.getString("Venda"));
+
+            }
+            allProducts.add(IDS);
+            allProducts.add(Nomes);
+            allProducts.add(Pesos);
+            allProducts.add(Disponibilidades);
+            allProducts.add(QtndEstoques);
+            allProducts.add(Compras);
+            allProducts.add(Vendas);
+        } catch (SQLException e) {}
+        return allProducts;
+    }
+
+    static boolean createProduct(String Nome, String Peso, String Disponibilidade, String QtndEstoque, String Compra, String Venda) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE);
+             PreparedStatement stmt = conn.prepareStatement("INSERT INTO " + TABLE_PRODUCTS + " (Nome, Peso, Disponibilidade, QtndEstoque, Compra, Venda) VALUES (?, ?, ?, ?, ?, ?)")) {
+
+            stmt.setString(1, Nome);
+            stmt.setString(2, Peso);
+            stmt.setString(3, Disponibilidade);
+            stmt.setString(4, QtndEstoque);
+            stmt.setString(5, Compra);
+            stmt.setString(6, Venda);
+
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    static boolean setProductData(int ID, String Nome, String Peso, String Disponibilidade, String QtndEstoque, String Compra, String Venda) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE)) {
+            String sql = "UPDATE " + TABLE_PRODUCTS + " SET Nome = ?, Peso = ?, Disponibilidade = ?, QtndEstoque = ?, Compra = ?, Venda = ?, WHERE ID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, Nome);
+            stmt.setString(2, Peso);
+            stmt.setString(3, Disponibilidade);
+            stmt.setString(4, QtndEstoque);
+            stmt.setString(5, Compra);
+            stmt.setString(6, Venda);
+            stmt.setInt(7, ID);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {}
+        return false;
+    }
+
+    static boolean delProductData(int ID) {
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE)) {
+            String sql = "DELETE FROM " + TABLE_PRODUCTS + " WHERE ID = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, ID);
+
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Product with ID " + ID + " was deleted successfully.");
+                return true;
+            } else {
+                System.out.println("No Product was found with ID " + ID);
                 return false;
             }
         } catch (SQLException e) {}
