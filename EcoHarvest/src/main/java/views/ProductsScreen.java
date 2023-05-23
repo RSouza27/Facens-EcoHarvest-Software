@@ -215,21 +215,15 @@ public class ProductsScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuyProdActionPerformed
 
     private void btnDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProductActionPerformed
-               if (dbAccess.deleteProducts(Integer.parseInt(fieldID.getText()))) {
-            updateTable();
-        }
+
     }//GEN-LAST:event_btnDeleteProductActionPerformed
 
     private void btnUpdateProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateProductActionPerformed
-        BuyProductsScreen page = new BuyProductsScreen(Integer.parseInt(fieldID.getText()), 2);
-        page.setVisible(true);
-        dispose();
+
     }//GEN-LAST:event_btnUpdateProductActionPerformed
 
     private void btnViewProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewProductActionPerformed
-        BuyProductsScreen page = new BuyProductsScreen(Integer.parseInt(fieldID.getText()), 1);
-        page.setVisible(true);
-        dispose();
+
     }//GEN-LAST:event_btnViewProductActionPerformed
 
     private void fieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldIDActionPerformed
