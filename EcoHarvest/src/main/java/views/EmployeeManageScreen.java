@@ -107,7 +107,7 @@ public class EmployeeManageScreen extends javax.swing.JFrame {
 
         labelFacaCadastro.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelFacaCadastro.setForeground(new java.awt.Color(0, 51, 0));
-        labelFacaCadastro.setText("Visualizar funcionario");
+        labelFacaCadastro.setText("Cadastrar funcionario");
 
         jLabel1.setText("E-mail:");
 
