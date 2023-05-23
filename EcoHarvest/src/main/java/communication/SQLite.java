@@ -22,7 +22,7 @@ public class SQLite {
     private static final String DB_FILE = "db.sqlite";
     private static final String TABLE_ADMIN = "admin";
     private static final String TABLE_EMPLOYEE = "employee";
-    private static String TABLE_PRODUCTS;
+    private static final String TABLE_PRODUCTS = "products";
 
     private static boolean isDatabaseExist() {
         File file = new File(DB_FILE);
@@ -105,6 +105,26 @@ public class SQLite {
             return false;
         }
     }
+   
+    private static boolean createProductsTable() {
+        String createTableQuery = "CREATE TABLE " + TABLE_PRODUCTS + " ("
+                + "ID INTEGER PRIMARY KEY,"
+                + "Nome TEXT NOT NULL,"
+                + "Peso TEXT NOT NULL,"
+                + "Disponibilidade TEXT NOT NULL,"
+                + "QtndEstoque TEXT NOT NULL,"
+                + "Compra TEXT NOT NULL,"
+                + "Venda TEXT NOT NULL,"
+                + ")";
+
+        try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE);
+            Statement stmt = conn.createStatement()) {
+            stmt.execute(createTableQuery);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }    
     
     public static boolean checkAdminExist(String username) {
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB_FILE);
