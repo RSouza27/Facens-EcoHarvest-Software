@@ -53,10 +53,10 @@ public class EmployeeManageScreen extends javax.swing.JFrame {
             }
         }
         if (this.action == 1){
-            labelFacaCadastro.setText("Visualize funcionario");
+            labelFacaCadastro.setText("Visualizar funcionario");
             btnRegister.setText("Deletar");
         } else if (this.action == 2) {
-            labelFacaCadastro.setText("Atualize funcionario");
+            labelFacaCadastro.setText("Atualizar funcionario");
             btnRegister.setText("Atualizar");
         }
     }

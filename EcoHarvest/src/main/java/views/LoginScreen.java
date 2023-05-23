@@ -177,7 +177,7 @@ public class LoginScreen extends javax.swing.JFrame {
         String password = fieldPassword.getText().replaceAll("\\s", "");
         if (dbAccess.checkAdminLogin(username,password)) {
             logger.info("Login realizado com sucesso.");
-            AdministrationScreen page = new AdministrationScreen();
+            SelectionScreen page = new SelectionScreen();
             page.setVisible(true);
             dispose();
         } else {
